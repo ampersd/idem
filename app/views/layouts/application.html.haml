@@ -6,4 +6,23 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    -if user_signed_in?
+      =render 'layouts/menu'
     = yield
+
+    -#блоки отображения нотификаций.
+    -# проверяем каждый тип flash, если есть, выводим нотификацию
+    #ohsnap
+    -if !flash[:notice].nil?
+      :javascript
+        ohSnap('#{content_tag(:b,flash[:notice]['title'])}<br>#{flash[:notice]['msg']}','blue')
+    -if !flash[:alert].nil?
+      :javascript
+        ohSnap('#{content_tag(:b,flash[:alert]['title'])}<br>#{flash[:alert]['msg']}','yellow');
+        ohSnap('#{content_tag(:b,flash[:alert])}<br>#{flash[:alert]['msg']}','yellow');
+    - if !flash[:error].nil?
+      :javascript
+        ohSnap('#{content_tag(:b,flash[:error]['title'])}<br>#{flash[:error]['msg']}','red');
+    -if !flash[:warn].nil?
+      :javascript
+        ohSnap('#{flash[:warn]}','orange');

@@ -38,8 +38,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
-gem 'haml'
+gem 'haml-rails'
 gem 'bootstrap-sass'
+gem 'vkontakte_api', '~> 1.4'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-vkontakte'
+gem 'russian'
 
 group :test, :development do
   gem 'rspec-rails'
@@ -48,7 +53,9 @@ group :test, :development do
 end
 
 group :test do
-  gem 'rspec-legacy_formatters'
   gem 'capybara'
   gem 'launchy'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'rspec-legacy_formatters', platform: :mri
 end

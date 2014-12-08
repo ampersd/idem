@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
-  get 'base/index'
 
+  #  настройка devise
+  get 'omniauth_callbacks/vkontakte'
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_scope :user do
+    delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+
+  # корреной маршрут
+  root 'base#start'
+
+  # главная страница
+  get '/home', to: 'base#home', as: :home
   get 'base/login'
+
+  # ресурс событий
+  resources :event
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,3 +1,54 @@
 // Place all the styles related to the base controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background: asset_url('start_bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Arvo:700);
+@mixin logo{
+  font-family: 'Arvo', serif;
+}
+h1,h3 {
+  color: white;
+  &.logo {
+    @include logo;
+    font-size: 12rem;
+    margin: 0 auto;
+  }
+}
+.logo{
+  @include logo;
+}
+
+.btn-default{
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: white;
+  &:hover{
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: white;
+    border-color: #4A89DC;
+  }
+}
+
+.social-ico{
+  width:30px;
+}
+@mixin gray{
+  background-image: asset_url('0.65pxl.png');
+}
+@mixin margin-30{
+  margin-top: 30rem;
+}
+.start{
+  @include gray;
+  @include margin-30;
+  padding: 30px;
+}
