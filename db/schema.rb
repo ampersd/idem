@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 20141210110727) do
     t.string  "icon"
     t.integer "checkins"
     t.string  "address"
-    t.integer "city_id_id"
+    t.integer "city_id"
   end
 
-  add_index "places", ["city_id_id"], name: "index_places_on_city_id_id"
+  add_index "places", ["city_id"], name: "index_places_on_city_id"
 
   create_table "users", force: true do |t|
     t.string   "first_name",                      null: false

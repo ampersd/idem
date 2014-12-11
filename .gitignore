@@ -16,3 +16,4 @@
 /log/*.log.age
 /tmp
 /.idea
+/*.rdb

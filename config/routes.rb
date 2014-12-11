@@ -15,8 +15,12 @@ Rails.application.routes.draw do
 
   # страницы доступные только авторизованным пользователям
   authenticate :user do
-  # ресурс событий
-  resources :event
+
+  # ресурс событий c досутоп только к index
+  resources :events, only: [:index], controller: :event
+
+  # ресурс мест с доступом только к index
+  resources :places, only: [:index]
 
   end
   # The priority is based upon order of creation: first created -> highest priority.

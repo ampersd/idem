@@ -8,6 +8,6 @@ class CreatePlaces < ActiveRecord::Migration
       t.integer :checkins
       t.string :address
     end
-      add_reference :places, :city_id, index: true
+      add_reference :places, :city, index: true
   end
 end

@@ -15,17 +15,13 @@ class Event < ActiveRecord::Base
 
     # удаляем ненужные ключи is_closed, type, is_admin, is_member
     bad_keys = %w(is_closed type is_admin is_member status_audio)
-    bad_keys.each do |bk|
-      hashie.delete(bk.to_sym)
-    end
+    hashie.clear! bad_keys
 
-    # присваиваем месту ID места todo заменить на метод find_or_create модели Place
+    # присваиваем месту ID места
     if hashie.place?
-      hashie.place_id = hashie.place.pid
+      hashie.place_id = Place.find_or_create(hashie.place).id
       hashie.delete(:place)
     end
-
-
     # нормализуем хэш, заменя ключи API ключами модели
     key_map= {
         gid: :id,
@@ -36,7 +32,7 @@ class Event < ActiveRecord::Base
         photo: :photo_small,
         photo_medium: :photo
     }
-    key_map.each{|old,new| hashie[new] = hashie.delete old}
+    hashie.key_remap! key_map
 
     # форматируем время
     hashie.start = Time.at hashie.start.to_i

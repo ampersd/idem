@@ -13,7 +13,6 @@ namespace :resque do
 
     Resque.redis = 'localhost:6379'
     Resque.schedule = YAML.load_file('config/rescue_schedule.yml')
-    Resque.enqueue GetEvents
   end
 end
 
