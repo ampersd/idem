@@ -3,6 +3,7 @@ class OmniauthCallbacksController < ApplicationController
   # колбэк при успешном получении разрешений
   def vkontakte
     # Ищем пользователя или создаем нового
+    p request.env['omniauth.auth']
     @user = User.find_for_vkontakte_oauth(request.env["omniauth.auth"])
 
     # если пользовтель создан без ошибок и уже сущесвует входим под ним и выводим приветственное сообщение

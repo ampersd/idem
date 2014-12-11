@@ -12,11 +12,13 @@ Rails.application.routes.draw do
 
   # главная страница
   get '/home', to: 'base#home', as: :home
-  get 'base/login'
 
+  # страницы доступные только авторизованным пользователям
+  authenticate :user do
   # ресурс событий
   resources :event
 
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

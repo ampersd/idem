@@ -1,6 +1,8 @@
 class City < ActiveRecord::Base
   # имеет много пользователей
   has_many :users
+  has_many :places
+  has_many :events
 
   # валидация поля id. Должно присутствовать обязательно
   validates :id, presence: {message:"^Ошибка при создании города. Отсутствует ID."}

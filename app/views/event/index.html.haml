@@ -1,7 +1,6 @@
 -# это просто дебажная инфа чтобы смотреть что возвращает поиск событий
 .jumbotron
-  -@events.map{|e| @events.delete(e) if e.class == Fixnum}
-  =@events.count
   -@events.each do |e|
-    = e
+    =e.title
+    %br
     %br

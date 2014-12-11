@@ -45,6 +45,10 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-vkontakte'
 gem 'russian'
+gem 'resque'
+gem 'resque-scheduler'
+gem 'redis'
+gem 'logging'
 
 group :test, :development do
   gem 'rspec-rails'
